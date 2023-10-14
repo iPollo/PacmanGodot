@@ -4,62 +4,59 @@ using System;
 public partial class pacman : Area2D
 {
 
+    // Nodes
+    AnimatedSprite2D pacmanSprite;
+
+    // Privates
     [Export]
-    private int pacmanSpeed = 100;
-    private Vector2 pacmanMoveDirection;
+    private int pacmanSpeed = 200;
+    private Vector2 pacmanMoveDirection = Vector2.Zero;
 
-    // Called when the node enters the scene tree for the first time.
-	public override void _Ready()
-	{
-        pacmanMoveDirection.X = 1;
-        pacmanMoveDirection.Y = 0;
-	}
-    
-
-	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
-	{
-        if(Input.IsActionJustPressed("move_right")){
-            
-        }
-        else if(Input.IsActionJustPressed("move_left")){
-
-        }
-        else if(Input.IsActionJustPressed("move_down")){
-
-        }
-        else if(Input.IsActionJustPressed("move_up")){
-
-        }
-
-
-	}
-
-    
-    private void processInput(){
+	public override void _Ready(){
         
-        // VERIFICAR se HÁ COLISÃO
-        if(checkCollisions()){
-            
+        // Init Settings
+        pacmanSprite = GetNode("AnimatedSprite2D") as AnimatedSprite2D;
+        pacmanSprite.Play();
+        
+        // Default data
+        PacmanChangeDirection(Vector2.Right);
+	}
+    
+	public override void _Process(double delta){
+        PacmanMove(delta);
+	}
+
+    public override void _Input(InputEvent @event){
+
+        if(@event.IsActionPressed("ui_right")) PacmanChangeDirection(Vector2.Right);
+        if(@event.IsActionPressed("ui_left")) PacmanChangeDirection(Vector2.Left);
+        if(@event.IsActionPressed("ui_down")) PacmanChangeDirection(Vector2.Down);
+        if(@event.IsActionPressed("ui_up")) PacmanChangeDirection(Vector2.Up);
+
+    }
+
+    private void PacmanChangeDirection(Vector2 dir){
+
+        // Update move direction and sprite animation        
+        pacmanMoveDirection = dir;
+
+        if(pacmanMoveDirection == Vector2.Left){
+            pacmanSprite.Animation = "pacman_move_left";
+        }
+        if(pacmanMoveDirection == Vector2.Right){
+            pacmanSprite.Animation = "pacman_move_right";
+        }
+        if(pacmanMoveDirection == Vector2.Up){
+            pacmanSprite.Animation = "pacman_move_up";
+        }
+        if(pacmanMoveDirection == Vector2.Down){
+            pacmanSprite.Animation = "pacman_move_down";
         }
 
-        // SE NÃO HOUVER COLISÃO MUDAR A DIREÇÃO
-        // SE HOUVER MANTER O BOTÃO COMO PRÓXIMO MOVIMENTO
-
     }
 
-    private bool checkCollisions(){
-        return false;
-    }
-
-    private void pacmanChangeDirection(){
-
-
-
-    }
-
-    private void pacmanMove(){
-
+    private void PacmanMove(double deltaTime){
+        this.Position += pacmanMoveDirection * pacmanSpeed * (float)deltaTime;
     }
 
 }
