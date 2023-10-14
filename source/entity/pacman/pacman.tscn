@@ -1,6 +1,129 @@
-[gd_scene format=3 uid="uid://cgp66mqo8gdpx"]
+[gd_scene load_steps=17 format=3 uid="uid://cgp66mqo8gdpx"]
+
+[ext_resource type="Script" path="res://source/entity/pacman/pacman.cs" id="1_5353p"]
+[ext_resource type="Texture2D" uid="uid://dry8pfgnbpspp" path="res://assets/PACMAN_SPRITESHEET.png" id="2_4ssea"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1hev"]
+atlas = ExtResource("2_4ssea")
+region = Rect2(850, 150, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rfcir"]
+atlas = ExtResource("2_4ssea")
+region = Rect2(850, 200, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qt30g"]
+atlas = ExtResource("2_4ssea")
+region = Rect2(850, 250, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72dj6"]
+atlas = ExtResource("2_4ssea")
+region = Rect2(850, 450, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji0q1"]
+atlas = ExtResource("2_4ssea")
+region = Rect2(850, 400, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cncaj"]
+atlas = ExtResource("2_4ssea")
+region = Rect2(850, 350, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d7n05"]
+atlas = ExtResource("2_4ssea")
+region = Rect2(850, 0, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jamn5"]
+atlas = ExtResource("2_4ssea")
+region = Rect2(850, 50, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pho3w"]
+atlas = ExtResource("2_4ssea")
+region = Rect2(850, 100, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ly0c0"]
+atlas = ExtResource("2_4ssea")
+region = Rect2(850, 450, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ncjx"]
+atlas = ExtResource("2_4ssea")
+region = Rect2(850, 500, 50, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vwcwu"]
+atlas = ExtResource("2_4ssea")
+region = Rect2(850, 550, 50, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_v04ae"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1hev")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rfcir")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qt30g")
+}],
+"loop": true,
+"name": &"pacman_move_down",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72dj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ji0q1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cncaj")
+}],
+"loop": true,
+"name": &"pacman_move_left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d7n05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jamn5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pho3w")
+}],
+"loop": true,
+"name": &"pacman_move_right",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ly0c0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ncjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vwcwu")
+}],
+"loop": true,
+"name": &"pacman_move_up",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4g45"]
+radius = 18.0278
 
 [node name="Pacman" type="Area2D"]
 position = Vector2(199, 110)
+script = ExtResource("1_5353p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_v04ae")
+animation = &"pacman_move_down"
+frame = 1
+frame_progress = 0.141782
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, -5)
+shape = SubResource("CircleShape2D_c4g45")
