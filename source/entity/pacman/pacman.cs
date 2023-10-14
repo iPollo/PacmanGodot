@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class pacman : Area2D
+public partial class pacman : CharacterBody2D
 {
 
     // Nodes

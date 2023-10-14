@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://btkh7tfmnjyqi"]
+
+[ext_resource type="PackedScene" uid="uid://cgp66mqo8gdpx" path="res://source/entity/pacman/pacman.tscn" id="1_yr8g7"]
+[ext_resource type="PackedScene" uid="uid://bdces7rkk6p3a" path="res://source/map/tile_map.tscn" id="2_sayp0"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_y7qyh"]
+script/source = "using Godot;
+using System;
+
+public partial class init : Node2D
+{
+	// Called when the node enters the scene tree for the first time.
+	public override void _Ready()
+	{
+	
+	
+	}
+
+	// Called every frame. 'delta' is the elapsed time since the previous frame.
+	public override void _Process(double delta)
+	{
+	}
+}
+"
+
+[node name="Game" type="Node2D"]
+script = SubResource("CSharpScript_y7qyh")
+
+[node name="TileMap" parent="." instance=ExtResource("2_sayp0")]
+
+[node name="Pacman" parent="." instance=ExtResource("1_yr8g7")]
+position = Vector2(199, 111)

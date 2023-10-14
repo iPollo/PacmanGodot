@@ -3,6 +3,9 @@
 [ext_resource type="Script" path="res://source/entity/pacman/pacman.cs" id="1_5353p"]
 [ext_resource type="Texture2D" uid="uid://dry8pfgnbpspp" path="res://assets/PACMAN_SPRITESHEET.png" id="2_4ssea"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_c4g45"]
+radius = 18.0278
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_d1hev"]
 atlas = ExtResource("2_4ssea")
 region = Rect2(850, 150, 50, 50)
@@ -110,12 +113,14 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_c4g45"]
-radius = 18.0278
-
-[node name="Pacman" type="Area2D"]
+[node name="Pacman" type="CharacterBody2D"]
 position = Vector2(199, 110)
 script = ExtResource("1_5353p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, -5)
+shape = SubResource("CircleShape2D_c4g45")
+one_way_collision_margin = 0.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
@@ -123,7 +128,3 @@ sprite_frames = SubResource("SpriteFrames_v04ae")
 animation = &"pacman_move_down"
 frame = 1
 frame_progress = 0.141782
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-5, -5)
-shape = SubResource("CircleShape2D_c4g45")
