@@ -110,8 +110,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_c4g45"]
-radius = 8.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73i8j"]
+size = Vector2(14, 12)
 
 [node name="Pacman" type="CharacterBody2D"]
 position = Vector2(199, 110)
@@ -119,13 +119,12 @@ script = ExtResource("1_5353p")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(24, -4)
+position = Vector2(3, 2)
 scale = Vector2(0.56, 0.56)
 sprite_frames = SubResource("SpriteFrames_v04ae")
 animation = &"pacman_move_up"
-frame_progress = 0.711426
+frame_progress = 0.617811
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(21, -7)
-shape = SubResource("CircleShape2D_c4g45")
+shape = SubResource("RectangleShape2D_73i8j")
 one_way_collision_margin = 0.0

@@ -15,6 +15,12 @@ run/main_scene="res://Game.tscn"
 config/features=PackedStringArray("4.1", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[display]
+
+window/size/viewport_width=1000
+window/size/viewport_height=800
+window/size/resizable=false
+
 [dotnet]
 
 project/assembly_name="Godot Pacman"
