@@ -56,7 +56,9 @@ public partial class pacman : CharacterBody2D
     }
 
     private void PacmanMove(double deltaTime){
-        this.Position += pacmanMoveDirection * pacmanSpeed * (float)deltaTime;
+        //this.Position += pacmanMoveDirection * pacmanSpeed * (float)deltaTime;
+        Velocity = pacmanMoveDirection * pacmanSpeed;
+        MoveAndSlide();
     }
 
 }
