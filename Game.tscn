@@ -32,7 +32,7 @@ offset_bottom = 817.0
 color = Color(0.0823529, 0.160784, 0.219608, 1)
 
 [node name="Pacman" parent="." instance=ExtResource("1_yr8g7")]
-position = Vector2(291, 242)
+position = Vector2(639, 305)
 scale = Vector2(2.88, 2.88)
 
 [node name="TileMap" parent="." instance=ExtResource("2_sayp0")]
